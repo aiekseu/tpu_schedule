@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_campus_map/pages/Schedule.dart';
 
 import './pages/GroupChoosing.dart';
 
@@ -23,10 +24,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialRoute: '/schedule',
       routes: {
-        '/': (context) =>
+        '/': (context) => ChooseYourGroup(),
+        '/schedule' : (context) => Schedule(),
       },
-      home: ChooseYourGroup(),
     );
   }
 }
