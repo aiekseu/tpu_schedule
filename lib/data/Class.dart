@@ -5,6 +5,8 @@ class Class {
   String lecturerName;
   String building;
   String room;
+  double x;
+  double y;
 
   Class (this.startTime, this.endTime, this.name, this.lecturerName, this.building, this.room);
 }

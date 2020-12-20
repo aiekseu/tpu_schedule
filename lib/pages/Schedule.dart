@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_campus_map/data/ScheduleData.dart';
 
-import 'file:///D:/pa6ota/android/flutter_campus_map/lib/widgets/Class.dart';
+import 'file:///D:/pa6ota/android/flutter_campus_map/lib/data/Class.dart';
+import 'package:flutter_campus_map/widgets/ClassLocation.dart';
 
 class Schedule extends StatelessWidget {
   //DatePick('16.12', 'ср')
@@ -81,8 +82,22 @@ class _ClassesListState extends State<ClassesList> {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
+    void _showModalBottomSheet(BuildContext context, Map classInfo) {
+      showModalBottomSheet<void>(
+        context: context,
+        builder: (context) {
+          return ClassLocation(classInfo);
+        },
+        enableDrag: true,
+        isScrollControlled: true,
+      );
+    }
+
+
     return Expanded(
       flex: 11,
       child: ListView.separated(
@@ -96,7 +111,14 @@ class _ClassesListState extends State<ClassesList> {
             elevation: 0,
             child: InkWell(
               onTap: () {
-
+                Map classInfo = {
+                  'startTime' : monday[index].startTime,
+                  'endTime' : monday[index].endTime,
+                  'name' : monday[index].name,
+                  'building' : monday[index].building,
+                  'room' : monday[index].room,
+                };
+                _showModalBottomSheet(context, classInfo);
               },
               child: Column(
                 children: [
